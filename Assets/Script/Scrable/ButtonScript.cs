@@ -26,33 +26,7 @@ public class ButtonScript : MonoBehaviour
         {
             OnButtonClick_new_List.Add(levelManagerObj.ChildPointsList[i]);
         }
-
         moveItemsToCenter();
-        //moving to left side first 
-        /*for (int i = 0; i < levelManagerObj.instantiatedObjects.Count; i++)
-        {
-            newValue = Random.Range(0, OnButtonClick_new_List.Count);
-            levelManagerObj.instantiatedObjects[i].SetActive(false);
-            levelManagerObj.instantiatedObjects[i].transform.position = OnButtonClick_new_List[newValue].transform.position;
-            levelManagerObj.instantiatedObjects[i].SetActive(true);
-            if (i == levelManagerObj.instantiatedObjects.Count - 1)
-            {
-                LeanTween.move(levelManagerObj.instantiatedObjects[i], levelManagerObj.ChildPointsList[0].transform.position, 0.5f).setOnComplete(moveItemsToCenter);
-
-
-            }
-            else
-            {
-                LeanTween.move(levelManagerObj.instantiatedObjects[i], levelManagerObj.ChildPointsList[i + 1].transform.position, 0.5f).setOnComplete(() => { });
-
-
-            }
-
-
-
-        }*/
-
-
     }
     Coroutine moveItemToNewPlace;
     public void moveItemsToCenter()
@@ -61,8 +35,6 @@ public class ButtonScript : MonoBehaviour
         for (int i = 0; i < levelManagerObj.instantiatedObjects.Count; i++)
         {
             print("move item to center "+ i);
-            /*LeanTween.move(levelManagerObj.instantiatedObjects[i], GameObjectForCenterPoint.transform.position, 0.5f);*/
-           
             LeanTween.move(levelManagerObj.instantiatedObjects[i], GameObjectForCenterPoint.transform.position, 0.5f).setOnComplete(() =>
             {
                 print(levelManagerObj.instantiatedObjects.Count - 1);
@@ -70,7 +42,7 @@ public class ButtonScript : MonoBehaviour
                 if (i == levelManagerObj.instantiatedObjects.Count)
                 {
                    if(moveItemToNewPlace == null)
-                    moveItemToNewPlace = StartCoroutine(MoveItemToNewPlace());
+                   moveItemToNewPlace = StartCoroutine(MoveItemToNewPlace());
 
                 }
             });
@@ -83,26 +55,12 @@ public class ButtonScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < levelManagerObj.instantiatedObjects.Count; i++)
         {
-
-            /* print("button list ko count" + OnButtonClick_new_List.Count);*/
             newValue = Random.Range(0, OnButtonClick_new_List.Count);
-
-            /*levelManagerObj.instantiatedObjects[i].transform.position = OnButtonClick_new_List[newValue].transform.position;*/
-
             LeanTween.move(levelManagerObj.instantiatedObjects[i], OnButtonClick_new_List[newValue].transform.position, 0.1f);
-
             OnButtonClick_new_List.Remove(OnButtonClick_new_List[newValue]);
-         
-           
-            
         }
         yield return new WaitForSeconds(0.2f);
         moveItemToNewPlace = null;
         GetComponent<Button>().interactable = true;
     }
-
-
-   
-
-
 }

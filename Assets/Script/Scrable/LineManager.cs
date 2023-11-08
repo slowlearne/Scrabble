@@ -6,10 +6,10 @@ public class LineManager : MonoBehaviour
 {
     public List<GameObject> linesList;
     public LineRenderer lineCreator;
-    Vector3 currentPosition;
-    float fpsCounter;
+    Vector3 currentPosition/*,startMousePosition*/;
+    /*float fpsCounter;
     int animationStep;
-    [SerializeField] private Texture[] tex;
+    [SerializeField] private Texture[] tex;*/
 
     void Start()
     {
@@ -36,17 +36,26 @@ public class LineManager : MonoBehaviour
     }*/
     private void Update()
     {
+        /*if(Input.GetMouseButtonDown(0))
+        {
+            startMousePosition =Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }*/
+
         if (Input.GetMouseButton(0))
         {
-           
+
             currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             currentPosition.z = 0f;
-            lineCreator.SetPosition(lineCreator.positionCount-1, currentPosition);
-           /* LaserAnimation();*/
+            lineCreator.SetPosition(lineCreator.positionCount - 1, currentPosition);
+            /*LaserAnimation();*/
         }
 
-        
-
+        /*if (Input.GetMouseButton(0))
+        {
+            currentPosition=Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            lineCreator.SetPosition(0,new Vector3 (startMousePosition.x, startMousePosition.y, 0f));
+            lineCreator.SetPosition(lineCreator.positionCount-1,new Vector3 (currentPosition.x,currentPosition.y, 0f));
+        }*/
     }
 }
 
