@@ -8,11 +8,16 @@ using UnityEngine.EventSystems;
 
 public class ButtonScript : MonoBehaviour,IPointerDownHandler
 {
+    [Header("GameManager")]
     public GameManager gameManagerObj;
+    [Header("levelManager")]
     public LevelManager levelManagerObj;
     int newValue;
+    [Header("Center")]
     public GameObject GameObjectForCenterPoint;
+    [Header("Roll")]
     public AudioSource audiosource_R;
+    [Header("Roll")]
     public AudioClip clip_Roll;
 
     public List<Transform> OnButtonClick_new_List = new List<Transform>();

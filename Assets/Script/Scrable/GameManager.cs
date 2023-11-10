@@ -21,15 +21,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> List_Of_Level=new List<GameObject>();
     public GameObject LevelToStart, LevelNameStore,LevelOne, LevelTwo, LevelThree, LevelFour, LevelFive, LevelSix,LevelSeven,LevelEight;
     public List<string> ListOfWords=new List<string>();
-    int j = 0,k=1;
+    int j = 0, k=1,coinValue=25;                          // j= wordList count, k=level count
     public AudioSource audioPlayer;
     public AudioClip levComplete_AudioClip;
     public AudioClip continue_Clip;
     public AudioClip background_Clip;
+    public TMP_InputField CoinText;
     void Awake()
     {
-        /* PlayerPrefs.SetString("name", "sumit");
-         string name = PlayerPrefs.GetString("name");*/
         audioPlayer.PlayOneShot(background_Clip);
         LevelComplete.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(onClickContinue);
         ThreePointParentStore = GameObject.Find("ThreePoint");
@@ -42,7 +41,8 @@ public class GameManager : MonoBehaviour
         TenPointParentStore = GameObject.Find("TenPoint");
         RollStorer = GameObject.Find("Roll");
         LevelNameStore = GameObject.Find("LevelName");
-
+        CoinText=GameObject.Find("CoinInputField").GetComponent<TMP_InputField>();
+        CoinText.text = coinValue.ToString();
         RollStorer.SetActive(false);
         ThreePointParentStore.SetActive(false);
         FourPointParentStore.SetActive(false);
@@ -132,7 +132,8 @@ public class GameManager : MonoBehaviour
         WordToSplit = "";
         levelManagerObj.concatenatedString = "";
         print("word after change" + WordToSplit);
-       
+        coinValue = coinValue + 25;
+        CoinText.text = coinValue.ToString();
         RollStorer.SetActive(false);
         PointStorer.SetActive(false);
         LevelToStart.SetActive(false);

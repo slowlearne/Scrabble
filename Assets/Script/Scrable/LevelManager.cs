@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Item")]
     public ItemScript ItemScriptObj;
+    [Header("LineRederer")]
     public LineManager lineManagerObj;
+    [Header("GameManager")]
     public GameManager GameManagerObj;
-    public GameObject ImageObject,ImageObject1, GameLevels, instantiatedItem,instantiatedItemOnLevel;
+    
+    public GameObject ImageObject,ImageObject1, instantiatedItem,instantiatedItemOnLevel;
     public char[] ArrayOfCharacter, ArrayOfWordSplit;
     public List<GameObject> instantiatedObjects = new List<GameObject>();
     public List<GameObject> instantiatedItemOnLevelList= new List<GameObject>();

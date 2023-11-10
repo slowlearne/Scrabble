@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LineManager : MonoBehaviour
 {
+    [Header("LineRederer")]
     public List<GameObject> linesList;
     public LineRenderer lineCreator;
     Vector3 currentPosition/*,startMousePosition*/;
