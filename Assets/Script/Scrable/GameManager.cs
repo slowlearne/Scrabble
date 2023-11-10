@@ -23,49 +23,15 @@ public class GameManager : MonoBehaviour
     public List<string> ListOfWords=new List<string>();
     int j = 0,k=1;
     public AudioSource audioPlayer;
-    public AudioClip m_audioClip;
-    GameObject PlayButtonStore,Menu_m,Panel_m;
-
+    public AudioClip levComplete_AudioClip;
+    public AudioClip continue_Clip;
+    public AudioClip background_Clip;
     void Awake()
     {
-        Menu_m = GameObject.Find("Menu");
-        Panel_m = GameObject.Find("Panel");
-        Panel_m.SetActive(false);
-        PlayButtonStore=GameObject.Find("PlayButton");
-        PlayButtonStore.GetComponent<Button>().onClick.AddListener(onClickPlay);
-        /*LevelComplete.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(onClickContinue);
-        audioPlayer.PlayOneShot(m_audioClip);
-        ThreePointParentStore = GameObject.Find("ThreePoint");
-        FourPointParentStore = GameObject.Find("FourPoint");
-        FivePointParentStore = GameObject.Find("FivePoint");
-        SixPointParentStore = GameObject.Find("SixPoint");
-        SevenPointParentStore = GameObject.Find("SevenPoint");
-        EightPointParentStore = GameObject.Find("EightPoint");
-        NinePointParentStore = GameObject.Find("NinePoint");
-        TenPointParentStore = GameObject.Find("TenPoint");
-        RollStorer = GameObject.Find("Roll");
-        LevelNameStore = GameObject.Find("LevelName");
-
-        RollStorer.SetActive(false);
-        ThreePointParentStore.SetActive(false);
-        FourPointParentStore.SetActive(false);
-        FivePointParentStore.SetActive(false);
-        SixPointParentStore.SetActive(false);
-        SevenPointParentStore.SetActive(false);
-        EightPointParentStore.SetActive(false);
-        NinePointParentStore.SetActive(false);
-        TenPointParentStore.SetActive(false);
-        LevelNameStore.SetActive(false) ;
-        levelManagerStore.SetActive(false);
-        StartNewLevel();*/
-    }
-
-    void onClickPlay()
-    {
-        Menu_m.SetActive(false);
-        Panel_m.SetActive(true);
+        /* PlayerPrefs.SetString("name", "sumit");
+         string name = PlayerPrefs.GetString("name");*/
+        audioPlayer.PlayOneShot(background_Clip);
         LevelComplete.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(onClickContinue);
-        audioPlayer.PlayOneShot(m_audioClip);
         ThreePointParentStore = GameObject.Find("ThreePoint");
         FourPointParentStore = GameObject.Find("FourPoint");
         FivePointParentStore = GameObject.Find("FivePoint");
@@ -90,7 +56,6 @@ public class GameManager : MonoBehaviour
         levelManagerStore.SetActive(false);
         StartNewLevel();
     }
-
     public void StartNewLevel()
     {
         print(" value of j is " + j);
@@ -152,7 +117,7 @@ public class GameManager : MonoBehaviour
             levelManagerStore.SetActive(true);
             LevelToStart = LevelSeven;
         }
-        else if (Length_of_Word == 8)
+        else if (Length_of_Word == 10)
         {
             PointStorer = TenPointParentStore;
             PointStorer.SetActive(true);
@@ -173,11 +138,14 @@ public class GameManager : MonoBehaviour
         LevelToStart.SetActive(false);
         LevelNameStore.SetActive(false);
         LevelComplete.SetActive(true);
+        audioPlayer.PlayOneShot(levComplete_AudioClip);
+
 
     }
 
     public void onClickContinue()
     {
+        audioPlayer.PlayOneShot(continue_Clip);
         LevelComplete.SetActive(false); 
         PointStorer.SetActive(false);
         levelManagerStore.SetActive(false);

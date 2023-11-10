@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Experimental.AI;
+using UnityEngine.EventSystems;
 
-public class ButtonScript : MonoBehaviour
+public class ButtonScript : MonoBehaviour,IPointerDownHandler
 {
     public GameManager gameManagerObj;
     public LevelManager levelManagerObj;
     int newValue;
     public GameObject GameObjectForCenterPoint;
-
+    public AudioSource audiosource_R;
+    public AudioClip clip_Roll;
 
     public List<Transform> OnButtonClick_new_List = new List<Transform>();
     private void Start()
@@ -20,6 +22,7 @@ public class ButtonScript : MonoBehaviour
     }
     public void OnButtonClick()
     {
+        
         GetComponent<Button>().interactable = false;
 
         for (int i=0;i<levelManagerObj.ChildPointsList.Count;i++) 
@@ -62,5 +65,10 @@ public class ButtonScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         moveItemToNewPlace = null;
         GetComponent<Button>().interactable = true;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        audiosource_R.PlayOneShot(clip_Roll);
     }
 }

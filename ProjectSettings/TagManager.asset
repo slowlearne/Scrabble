@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - line
-  - 
+  - Image
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 2812909101
+    locked: 0
   - name: line
     uniqueID: 1392327719
+    locked: 0
+  - name: Item
+    uniqueID: 3114555057
     locked: 0
