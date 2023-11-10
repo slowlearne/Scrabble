@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         TenPointParentStore.SetActive(false);
         LevelNameStore.SetActive(false);
         levelManagerStore.SetActive(false);
+        
         StartNewLevel();
     }
     public void StartNewLevel()
